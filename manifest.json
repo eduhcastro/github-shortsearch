@@ -1,0 +1,18 @@
+{
+    "manifest_version": 2,
+    "name": "GitHub Shorth",
+    "version": "0.0.1",
+    "description": "GitHub Shorth",
+    "author": "Skillerm",
+    "browser_action": {
+        "default_title": "GitHubShorth",
+        "default_popup": "index.html"
+    },
+      "content_scripts": [
+        {
+            "js": ["index.js"],
+            "css": ["index.css"],
+            "matches": ["https://github.com/search*"]
+        }
+    ]
+}
