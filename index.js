@@ -136,12 +136,27 @@ function Clone(e) {
 } // Observer Dom
 
 
+/* Desactive in 0.0.2
 const observer = new MutationObserver(function (a) {
-  // Event function to click page
-  GitHubShort();
+ // Event function to click page
+ GitHubShort();
 });
 observer.observe(document.querySelector("#js-pjax-container"), {
-  childList: true
+ childList: true
+}); */ // Start
+
+let previousUrl = '';
+
+var dom_observer = new MutationObserver(function (e) {
+  if (location.href !== previousUrl) {
+    previousUrl = location.href;
+    setTimeout(function () {
+      console.log('Loaded GitHubShort')
+      GitHubShort();
+    }, 700)
+  }
 }); // Start
 
-GitHubShort();
+dom_observer.observe(document, { childList: true, subtree: true });
+
+//GitHubShort();
